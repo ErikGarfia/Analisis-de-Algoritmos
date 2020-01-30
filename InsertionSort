@@ -1,0 +1,92 @@
+import os
+import sys
+from timeit	import timeit
+from time import time
+import random
+
+list = [] 
+
+def insertionSort(array): 
+
+	for i in range(1, len(array)): 
+		aux = array[i] 
+		# Acomodamos los elementos del arreglo de forma [0..i-1] que son mayores a variable aux 
+		j = i-1
+		while j >=0 and aux < array[j] : 
+				array[j+1] = array[j] 
+				j -= 1
+		array[j+1] = aux 
+#print("Cuantos numeros quieres considerar en tu arreglo?")
+
+
+def promedio (mylist):
+	start_time = time()
+	for i in range (mylist +1):
+		list.append(i) 
+	list.reverse()
+	array = list
+	print ("El arreglo desordenado es: ")
+	for i in range(len(array)):
+    	 print("%d" %array[i])
+	insertionSort(array) 
+	print ("Arreglo ordenado:") 
+	for i in range(len(array)): 
+		print("%d" %array[i])
+		t_transcurrido = time() - start_time
+	print("Tiempo transcurrido %.6f seconds" %t_transcurrido)
+
+
+
+def mejorcaso (mylist):
+	
+	#mylist = 10
+	#array = [5,8,13,1,4,2] 
+	start_time = time()
+	for i in range (mylist +1):
+		list.append(i) 
+	#print("lista es")
+	#print(list)
+	array = list
+	print ("El arreglo desordenado es: ")
+	for i in range(len(array)):
+    	 print("%d" %array[i])
+	insertionSort(array) 
+	print ("Arreglo ordenado:") 
+	for i in range(len(array)): 
+		print("%d" %array[i])
+		t_transcurrido = time() - start_time
+	print("Tiempo transcurrido %.6f seconds" %t_transcurrido)
+
+
+def peorcaso(mylist):
+	start_time = time()
+	for i in range (mylist):
+		list.append(random.randint(0,mylist)) 
+	array = list
+	print ("El arreglo desordenado es: ")
+	for i in range(len(array)):
+    	 print("%d" %array[i])
+	insertionSort(array) 
+	print ("Arreglo ordenado:") 
+	for i in range(len(array)): 
+		print("%d" %array[i])
+		t_transcurrido = time() - start_time
+	print("Tiempo transcurrido %.6f seconds" %t_transcurrido)
+
+opcion = input("Qué tipo de caso quieres?\nA)Mejor Caso\nB)Peor Caso\nC)Promedio\n")
+if (opcion == 'A'):
+	mylist = input("Cuantos numeros quieres considerar, rango 0-10001\n")
+	mylist = int(mylist)
+	mejorcaso(mylist)
+elif (opcion == 'B'):
+	mylist = input("Cuantos numeros quieres considerar, rango 0-10001\n")
+	mylist = int(mylist)
+	peorcaso(mylist)
+elif (opcion == 'C'):
+	mylist = input("Cuantos numeros quieres considerar, rango 0-10001\n")
+	mylist = int(mylist)
+	promedio(mylist)
+
+
+
+
